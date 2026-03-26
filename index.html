@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<title>Sürpriz</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:Arial;
+background:#0f172a;
+color:white;
+overflow:hidden;
+}
+
+#text{
+font-size:40px;
+border-right:3px solid white;
+padding-right:10px;
+white-space:nowrap;
+overflow:hidden;
+}
+
+body{
+margin:0;
+height:100vh;
+background-image:url("fon.jpeg");
+background-size:62%;
+background-repeat:no-repeat;
+background-position:center;
+}
+
+button{
+margin-top:30px;
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:20px;
+background:#22c55e;
+color:white;
+cursor:pointer;
+}
+
+.heart{
+position:absolute;
+font-size:22px;
+animation:fall 6s linear forwards;
+}
+
+@keyframes fall{
+from{transform:translateY(-100px);}
+to{transform:translateY(100vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="text"></div>
+
+<button onclick="start()">Sürprizi başlat</button>
+
+<audio id="music">
+<source src="hernerdeysen.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let message = "Sədaqət, ad günün mübarək ❤️";
+
+let i = 0;
+
+function type(){
+
+if(i < message.length){
+
+document.getElementById("text").innerHTML += message.charAt(i);
+
+i++;
+
+setTimeout(type,80);
+
+}
+
+}
+
+function start(){
+
+document.getElementById("music").play();
+
+type();
+
+for(let i=0;i<50;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=(3+Math.random()*4)+"s";
+
+document.body.appendChild(h);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
